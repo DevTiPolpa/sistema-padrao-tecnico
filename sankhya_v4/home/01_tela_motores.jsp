@@ -27,14 +27,37 @@
 
 <snk:query var="motores">
     
-    SELECT ID, 
-           NOME, 
-           LADO, 
+    SELECT
+           ID,
+               CASE 
+                WHEN NOME = 1 THEN 'MOTOR 1'
+                WHEN NOME = 2 THEN 'MOTOR 2'
+                WHEN NOME = 3 THEN 'MOTOR 3'
+                WHEN NOME = 4 THEN 'MOTOR 4'
+                WHEN NOME = 5 THEN 'MOTOR 5'
+                WHEN NOME = 6 THEN 'MOTOR 6'
+                WHEN NOME = 7 THEN 'MOTOR 7'
+                WHEN NOME = 8 THEN 'MOTOR 8'
+                WHEN NOME = 9 THEN 'MOTOR 9'
+                WHEN NOME = 10 THEN 'MOTOR 10'
+                WHEN NOME = 11 THEN 'MOTOR 11'
+                WHEN NOME = 12 THEN 'MOTOR 12'
+                WHEN NOME = 13 THEN 'MOTOR 13'
+                WHEN NOME = 14 THEN 'MOTOR 14'
+                WHEN NOME = 15 THEN 'MOTOR 15'
+                WHEN NOME = 16 THEN 'MOTOR 16'
+               END AS NOME,
+           
+           CASE
+                WHEN LADO = 1 THEN 'ESQUERDO'
+                WHEN LADO = 2 THEN 'DIREITO' 
+           END AS LADO, 
+           
            STATUS AS STATUS_VAL,
            DECODE(STATUS, '1', 'LIGADO', '2', 'DESLIGADO', '3', 'ERRO', 'OUTRO') AS STATUS_TXT,
            TO_CHAR(DATA_HORA, 'DD/MM/YYYY HH24:MI') AS ULTIMA_VERIF
       FROM AD_ADMOTORES 
-     ORDER BY LADO, NOME
+     ORDER BY DATA_HORA DESC
 </snk:query>
 
 
