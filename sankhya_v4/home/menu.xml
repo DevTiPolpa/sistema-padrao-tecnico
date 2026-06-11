@@ -1,0 +1,44 @@
+<gadget >
+  <level id="04S" description="Principal">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_04V" entryPoint="sankhya_v4/home/00_index.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="07R" description="Configuracao de Parametros">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_02F" entryPoint="sankhya_v4/home/06_tela_configuracao_parametros.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="04R" description="Umidade do Produto">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_036" entryPoint="sankhya_v4/home/03_tela_umidade_produto.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="06R" description="Umidade Estufa">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_040" entryPoint="sankhya_v4/home/05_tela_umidade_estufa.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="02R" description="Motores">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_052" entryPoint="sankhya_v4/home/01_tela_motores.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="03R" description="Temperatura Secador">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_061" entryPoint="sankhya_v4/home/02_tela_temperatura_secador.jsp">
+      </html5component>
+    </container>
+  </level>
+  <level id="05R" description="Carinhos Secador">
+    <container orientacao="V" tamanhoRelativo="100">
+      <html5component id="html5_077" entryPoint="sankhya_v4/home/04_tela_carrinhos_secador.jsp">
+      </html5component>
+    </container>
+  </level>
+</gadget>
