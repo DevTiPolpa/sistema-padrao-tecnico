@@ -56,7 +56,7 @@
         <li>Fora dessa faixa o registro é marcado como fora do padrão</li>
     </ul>
 
-    <span class="info">Pequise no Sankhya: Medições da Estufa</span>
+    <span class="info">Pequise no Sankhya: Umidade da Estufa</span>
 </div>
 
 

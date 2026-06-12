@@ -26,6 +26,7 @@
 
 <snk:query var="registros">
     SELECT TO_CHAR(DATA_HORA,'DD/MM/YYYY HH24:MI') AS DATA_HORA_FORMAT,
+           CARRINHO,
            NUMERO_PALETE,
            VALOR_UMIDADE,
            DECODE(STATUS, '1', 'NORMAL', '2', 'ABAIXO', '3', 'ACIMA', 'OUTRO') AS STATUS_TXT
@@ -46,10 +47,10 @@
 
     <p>Faixa ideal de umidade:</p>
     <ul>
-        <li>Mínimo: 18°C | Máximo: 22°C</li>
+        <li>Mínimo: 18% | Máximo: 22%</li>
         <li>Fora dessa faixa o registro é marcado como fora do padrão</li>
     </ul>
-    <span class="info">Pequise no Sankhya: Registro de Umidade do Produto</span>
+    <span class="info">Pequise no Sankhya: Umidade do Produto</span>
 </div>
 
 <div class="painel">
@@ -57,15 +58,17 @@
     <table>
         <tr>
             <th>Data/Hora</th>
+            <th>Carrinho</th>
             <th>Palete</th>
-            <th>Umidade</th>
+            <th>Umidade em %</th>
             <th>Status</th>
         </tr>
         <c:forEach items="${registros.rows}" var="r">
             <tr>
                 <td><c:out value="${r.DATA_HORA_FORMAT}"/></td>
+                <td><c:out value="${r.CARRINHO}"/></td>
                 <td><c:out value="${r.NUMERO_PALETE}"/></td>
-                <td><c:out value="${r.VALOR_UMIDADE}"/></td>
+                <td><c:out value="${r.VALOR_UMIDADE}"/>%</td>
                 <td class="${r.STATUS_TXT}"><c:out value="${r.STATUS_TXT}"/></td>
             </tr>
         </c:forEach>

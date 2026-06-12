@@ -20,17 +20,35 @@
         .ABAIXO { color: #1565c0; font-weight: bold; }
         .ACIMA  { color: #c62828; font-weight: bold; }
         .info { color: #1f3a5f; font-weight: bold; margin-bottom: 8px; display: block; }
+        .NAO_INFORMADO {color: #ff9800; font-weight: bold;}
     </style>
 </head>
 <body>
 
 <snk:query var="registros">
-    SELECT TO_CHAR(DATA_HORA,'DD/MM/YYYY HH24:MI') AS DATA_HORA_FMT,
-           TEMPERATURA,
-           STATUS
-      FROM AD_ADTEMPERATURASECADOR
-     WHERE ROWNUM <= 100
-     ORDER BY DATA_HORA DESC
+    SELECT
+    TO_CHAR(TO_DATE(DATA_HORA, 'DD/MM/RR HH24:MI'), 'DD/MM/YYYY HH24:MI') AS DATA_HORA_FMT,
+    TEMPERATURA,
+    CASE
+        WHEN ZONA = '1' THEN 'ZONA 1'
+        WHEN ZONA = '2' THEN 'ZONA 2'
+        WHEN ZONA = '3' THEN 'ZONA 3'
+        WHEN ZONA = '4' THEN 'ZONA 4'
+        WHEN ZONA = '5' THEN 'ZONA 5'
+        WHEN ZONA = '6' THEN 'ZONA 6'
+        WHEN ZONA = '7' THEN 'ZONA 7'
+        WHEN ZONA = '8' THEN 'ZONA 8'
+        ELSE 'ZONA DO SECADOR NÃO INFORMADA'
+    END AS ZONA,
+    CASE
+        WHEN STATUS = '1' THEN 'NORMAL'
+        WHEN STATUS = '2' THEN 'ABAIXO'
+        WHEN STATUS = '3' THEN 'ACIMA'
+        ELSE 'NAO_INFORMADO'
+    END AS STATUS_TEXT
+FROM AD_ADTEMPERATURASECADOR
+ORDER BY TO_DATE(DATA_HORA, 'DD/MM/RR HH24:MI') DESC
+FETCH FIRST 100 ROWS ONLY
 </snk:query>
 
 <div class="painel">
@@ -46,7 +64,7 @@
         <li>Abaixo de 50°C → fora do padrão (status: ABAIXO)</li>
         <li>Acima de 110°C → fora do padrão (status: ACIMA)</li>
     </ul>
-    <span class="info">Pequise no Sankhya: Temperatura Secador</span>
+    <span class="info">Pequise no Sankhya: Temperatura no Secador</span>
 </div>
 
 <div class="painel">
@@ -55,13 +73,20 @@
         <tr>
             <th>Data/Hora</th>
             <th>Temperatura (&#176;C)</th>
+            <th>Zona Secador</th>
             <th>Status</th>
         </tr>
         <c:forEach items="${registros.rows}" var="r">
             <tr>
                 <td><c:out value="${r.DATA_HORA_FMT}"/></td>
                 <td><c:out value="${r.TEMPERATURA}"/>&#176;C</td>
-                <td class="${r.STATUS}"><c:out value="${r.STATUS}"/></td>
+                <!--<td class="${r.STATUS}"><c:out value="${r.STATUS}"/></td> -->
+                <!--<td><c:out value="${h.NOME}"/></td>-->
+                <!--<td><c:out value="${r.STATUS_TXT}"/></td>-->
+                <td><c:out value="${r.ZONA}"/></td>
+                <td class="${r.STATUS_TEXT}">
+                    <c:out value="${r.STATUS_TEXT}"/>
+                </td>
             </tr>
         </c:forEach>
     </table>

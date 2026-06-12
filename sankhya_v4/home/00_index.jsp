@@ -28,12 +28,12 @@
     <div class="grid">
         <div class="card" onclick="irParaTela('02R')">
             <div class="icone">&#9881;</div>
-            <h3>Motores</h3>
+            <h3>Status Motores</h3>
             <p>Checagem dos 9 motores</p>
         </div>
         <div class="card" onclick="irParaTela('03R')">
             <div class="icone">&#127777;</div>
-            <h3>Temperatura Secador</h3>
+            <h3>Temperatura no Secador</h3>
             <p>Registro a cada 2 horas</p>
         </div>
         <div class="card" onclick="irParaTela('04R')">
@@ -43,12 +43,12 @@
         </div>
         <div class="card" onclick="irParaTela('05R')">
             <div class="icone">&#128667;</div>
-            <h3>Carrinhos Secador</h3>
+            <h3>Carrinhos no Secador</h3>
             <p>Entrada e sa&iacute;da</p>
         </div>
         <div class="card" onclick="irParaTela('06R')">
             <div class="icone">&#128293;</div>
-            <h3>Umidade Estufa</h3>
+            <h3>Umidade da Estufa</h3>
             <p>Controle da estufa</p>
         </div>
         <!--<div class="card" onclick="irParaTela('07R')">
